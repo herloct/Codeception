@@ -38,7 +38,8 @@ WORKDIR /repo
 
 # Install vendor
 COPY ./composer.json /repo/composer.json
-RUN composer install --prefer-dist --optimize-autoloader
+RUN composer install --prefer-dist --optimize-autoloader && \
+    composer clear-cache
 
 # Add source-code
 COPY . /repo
