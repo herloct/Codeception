@@ -36,12 +36,13 @@ RUN composer global require --optimize-autoloader \
 # Prepare application
 WORKDIR /repo
 
-# Install vendor
-COPY ./composer.json /repo/composer.json
-RUN composer install --prefer-dist --optimize-autoloader
-
 # Add source-code
-COPY . /repo
+RUN git clone -b 2.2 --single-branch git@github.com:Codeception/Codeception.git /repo && \
+    rm -rf /repo/.git
+
+# Install vendor
+RUN composer install --prefer-dist --optimize-autoloader --working-dir /repo && \
+    composer clear-cache
 
 ENV PATH /repo:${PATH}
 ENTRYPOINT ["codecept"]
