@@ -35,7 +35,7 @@ RUN apt-get update && \
         "hirak/prestissimo" && \
 
     # Add source-code
-    git clone -b 2.2 --single-branch git@github.com:Codeception/Codeception.git /repo && \
+    git clone -b 2.2 --single-branch https://github.com/herloct/Codeception.git /repo && \
     rm -rf /repo/.git && \
 
     # Install vendor
