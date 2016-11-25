@@ -2,7 +2,8 @@ FROM php:7.0-cli
 
 MAINTAINER Tobias Munk tobias@diemeisterei.de
 
-ENV COMPOSER_ALLOW_SUPERUSER=1 \
+ENV CODECEPTION_BRANCH=2.2 \
+    COMPOSER_ALLOW_SUPERUSER=1 \
     PATH=/repo:${PATH}
 
 # Install required system packages
@@ -35,7 +36,7 @@ RUN apt-get update && \
         "hirak/prestissimo" && \
 
     # Add source-code
-    git clone -b 2.2 --single-branch https://github.com/herloct/Codeception.git /repo && \
+    git clone -b $CODECEPTION_BRANCH --single-branch https://github.com/herloct/Codeception.git /repo && \
     rm -rf /repo/.git && \
 
     # Install vendor
