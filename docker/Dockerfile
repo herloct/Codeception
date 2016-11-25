@@ -28,8 +28,8 @@ RUN apt-get update && \
 
     # Install composer
     curl -sS https://getcomposer.org/installer | php -- \
-            --filename=composer \
-            --install-dir=/usr/local/bin && \
+        --filename=composer \
+        --install-dir=/usr/local/bin && \
     composer global require --optimize-autoloader \
         "hirak/prestissimo" && \
 
