@@ -13,15 +13,15 @@ RUN apt-get update && \
         zlib1g-dev \
         libssl-dev && \
 
-    # Install php extensions
-    docker-php-ext-install \
-        bcmath \
-        zip && \
-
     # Install pecl extensions
     pecl install mongodb xdebug && \
     docker-php-ext-enable mongodb && \
     docker-php-ext-enable xdebug && \
+
+    # Install php extensions
+    docker-php-ext-install \
+        bcmath \
+        zip && \
 
     # Configure php
     echo "date.timezone = UTC" >> /usr/local/etc/php/php.ini && \
