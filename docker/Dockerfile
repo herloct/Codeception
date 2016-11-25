@@ -23,8 +23,6 @@ RUN apt-get update && \
     docker-php-ext-enable mongodb && \
     docker-php-ext-enable xdebug && \
 
-    apt-get clean && \
-
     # Configure php
     echo "date.timezone = UTC" >> /usr/local/etc/php/php.ini && \
 
@@ -43,6 +41,7 @@ RUN apt-get update && \
     composer install --prefer-dist --optimize-autoloader --working-dir /repo && \
 
     # Cleanup
+    apt-get clean && \
     composer clear-cache && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
