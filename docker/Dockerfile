@@ -37,7 +37,7 @@ RUN composer global require --optimize-autoloader \
 WORKDIR /repo
 
 # Add source-code
-RUN git clone -b 2.2 --single-branch git@github.com:Codeception/Codeception.git /repo && \
+RUN git clone -b 2.2 --single-branch https://github.com/herloct/Codeception.git /repo && \
     rm -rf /repo/.git
 
 # Install vendor
