@@ -41,8 +41,9 @@ RUN apt-get update && \
 
     # Install vendor
     composer install --prefer-dist --optimize-autoloader --working-dir /repo && \
-    composer clear-cache && \
 
+    # Cleanup
+    composer clear-cache && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 ENTRYPOINT ["codecept"]
